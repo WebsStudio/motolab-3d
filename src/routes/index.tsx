@@ -1,9 +1,8 @@
-import { createFileRoute, ClientOnly } from "@tanstack/react-router";
-import { lazy, Suspense, useRef, type MouseEvent, type ReactNode } from "react";
+import { createFileRoute } from "@tanstack/react-router";
+import { useRef, type MouseEvent, type ReactNode } from "react";
 import { Phone, MessageCircle, Wrench, Gauge, CircleDot, ScanLine, ClipboardCheck, Sparkles, MapPin, Clock } from "lucide-react";
 import { Reviews } from "@/components/Reviews";
-
-const Moto3D = lazy(() => import("@/components/Moto3D"));
+import heroImg from "@/assets/hero.jpg";
 
 const TEL = "tel:+34663236307";
 const WA = "https://wa.me/34663236307?text=Hola%20BLACKSHIFT%2C%20quiero%20pedir%20cita";
@@ -67,9 +66,11 @@ function Index() {
       {/* HERO */}
       <section className="relative h-[100svh] min-h-[640px]">
         <div className="absolute inset-0">
-          <ClientOnly fallback={null}>
-            <Suspense fallback={null}><Moto3D /></Suspense>
-          </ClientOnly>
+          <img
+            src={heroImg}
+            alt="Moto custom en el taller BLACKSHIFT"
+            className="h-full w-full object-cover"
+          />
         </div>
         <div className="pointer-events-none absolute inset-0 bg-hero-fade" />
         <div className="pointer-events-none relative z-10 mx-auto flex h-full max-w-6xl flex-col justify-end px-6 pb-16">
