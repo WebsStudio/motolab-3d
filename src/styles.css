@@ -132,13 +132,122 @@
   --sidebar-ring: oklch(0.551 0.027 264.364);
 }
 
+/* BLACKSHIFT: carbón y brasa (always dark) */
+:root, .dark {
+  --background: oklch(0.205 0 0);
+  --foreground: oklch(0.96 0.005 60);
+  --card: oklch(0.27 0 0);
+  --card-foreground: oklch(0.96 0.005 60);
+  --popover: oklch(0.27 0 0);
+  --popover-foreground: oklch(0.96 0.005 60);
+  --primary: oklch(0.66 0.18 38);
+  --primary-foreground: oklch(0.15 0 0);
+  --secondary: oklch(0.38 0 0);
+  --secondary-foreground: oklch(0.96 0 0);
+  --muted: oklch(0.38 0 0);
+  --muted-foreground: oklch(0.72 0.01 60);
+  --accent: oklch(0.66 0.18 38);
+  --accent-foreground: oklch(0.15 0 0);
+  --border: oklch(1 0 0 / 10%);
+  --ring: oklch(0.66 0.18 38);
+}
+
+@theme inline {
+  --font-display: "Bebas Neue", Impact, sans-serif;
+  --font-sans: "Barlow", system-ui, sans-serif;
+}
+
 @layer base {
   * {
     border-color: var(--color-border);
   }
-
+  html { scroll-behavior: smooth; }
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: var(--font-sans);
   }
+}
+
+@utility eyebrow {
+  margin-bottom: 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+@utility text-stroke {
+  color: transparent;
+  -webkit-text-stroke: 2px var(--color-primary);
+}
+@utility bg-hero-fade {
+  background: linear-gradient(to top, var(--background) 5%, transparent 55%),
+    linear-gradient(to right, color-mix(in oklab, var(--background) 70%, transparent), transparent 60%);
+}
+@utility bg-ember-radial {
+  background: radial-gradient(60% 50% at 50% 60%, color-mix(in oklab, var(--primary) 18%, transparent), transparent 70%);
+}
+@utility shadow-ember {
+  box-shadow: 0 20px 60px -20px color-mix(in oklab, var(--primary) 45%, transparent);
+}
+@utility btn-ember {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.9rem 1.6rem; border-radius: 999px;
+  background: var(--primary); color: var(--primary-foreground);
+  font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em;
+  box-shadow: 0 10px 30px -10px color-mix(in oklab, var(--primary) 70%, transparent);
+  transition: transform 0.2s, box-shadow 0.2s;
+  &:hover { transform: translateY(-2px); box-shadow: 0 16px 40px -10px var(--primary); }
+}
+@utility btn-ghost {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.9rem 1.6rem; border-radius: 999px;
+  border: 1px solid var(--border); color: var(--foreground);
+  background: color-mix(in oklab, var(--background) 50%, transparent);
+  backdrop-filter: blur(8px);
+  font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em;
+  transition: border-color 0.2s, color 0.2s;
+  &:hover { border-color: var(--primary); color: var(--primary); }
+}
+@utility icon-btn {
+  display: grid; place-items: center; width: 2.75rem; height: 2.75rem; border-radius: 999px;
+  border: 1px solid var(--border); transition: all 0.2s;
+  &:hover { background: var(--primary); color: var(--primary-foreground); }
+}
+@utility service-card {
+  height: 100%; padding: 2rem; border-radius: 1.25rem;
+  border: 1px solid var(--border);
+  background: linear-gradient(145deg, var(--card), var(--background));
+  transition: transform 0.15s ease-out, border-color 0.3s;
+  transform-style: preserve-3d;
+  &:hover { border-color: color-mix(in oklab, var(--primary) 60%, transparent); }
+}
+@utility review-card {
+  padding: 2rem; border-radius: 1.25rem;
+  border: 1px solid var(--border);
+  background: linear-gradient(160deg, var(--card), var(--background));
+  opacity: 0.45; transition: opacity 0.8s, border-color 0.8s, box-shadow 0.8s;
+  &.is-active {
+    opacity: 1; border-color: var(--primary);
+    box-shadow: 0 30px 80px -30px color-mix(in oklab, var(--primary) 60%, transparent);
+  }
+}
+@utility wa-float {
+  position: fixed; right: 1.25rem; bottom: 1.25rem; z-index: 50;
+  display: grid; place-items: center; width: 3.75rem; height: 3.75rem; border-radius: 999px;
+  background: var(--primary); color: var(--primary-foreground);
+  box-shadow: 0 10px 30px -5px var(--primary);
+  animation: pulse-ember 2.4s infinite;
+}
+@utility map-frame {
+  filter: grayscale(1) invert(0.92) contrast(0.9);
+}
+@utility marquee {
+  animation: marquee 25s linear infinite;
+}
+@keyframes marquee { to { transform: translateX(-50%); } }
+@keyframes pulse-ember {
+  0%, 100% { box-shadow: 0 0 0 0 color-mix(in oklab, var(--primary) 60%, transparent); }
+  50% { box-shadow: 0 0 0 14px transparent; }
 }
