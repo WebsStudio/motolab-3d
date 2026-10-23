@@ -148,7 +148,7 @@ export default function Moto3D() {
       <directionalLight position={[4, 6, 5]} intensity={1.6} castShadow shadow-mapSize-width={1024} shadow-mapSize-height={1024} />
       <pointLight position={[-4, 2, -2]} color={EMBER} intensity={30} distance={12} />
       <pointLight position={[4, 0, 3]} color="#8aa" intensity={8} distance={10} />
-      <Bike />
+      <group position={[1.6, 0.5, -0.5]} scale={0.85}><Bike /></group>
       <Sparks />
       <mesh rotation-x={-Math.PI / 2} position={[0, -1, 0]} receiveShadow>
         <circleGeometry args={[6, 64]} />
