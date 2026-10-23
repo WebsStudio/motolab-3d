@@ -169,6 +169,12 @@
   }
 }
 
+html {
+  scroll-behavior: smooth;
+  /* keeps the heading of an anchored section clear of the fixed header */
+  scroll-padding-top: 6rem;
+}
+
 @utility eyebrow {
   margin-bottom: 0.75rem;
   font-size: 0.8rem;
