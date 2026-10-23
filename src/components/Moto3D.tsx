@@ -124,7 +124,7 @@ function Sparks() {
     return g;
   }, []);
   useFrame((_, d) => {
-    const a = geo.attributes.position as THREE.BufferAttribute;
+    const a = geo.attributes["position"] as THREE.BufferAttribute;
     const dt = Math.min(d, 0.05);
     for (let i = 0; i < a.count; i++) {
       let y = a.getY(i) + dt * (0.3 + (i % 7) * 0.08);
