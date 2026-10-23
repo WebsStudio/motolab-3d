@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useRef, type MouseEvent, type ReactNode } from "react";
 import { Phone, MessageCircle, Wrench, Gauge, CircleDot, ScanLine, ClipboardCheck, Sparkles, MapPin, Clock } from "lucide-react";
 import { Reviews } from "@/components/Reviews";
+import { BookingForm } from "@/components/BookingForm";
 import heroImg from "@/assets/hero.jpg";
 
 const TEL = "tel:+34663236307";
@@ -57,6 +58,7 @@ function Index() {
           <nav className="hidden gap-8 text-sm uppercase tracking-widest text-muted-foreground md:flex">
             <a href="#servicios" className="hover:text-primary">Servicios</a>
             <a href="#resenas" className="hover:text-primary">Reseñas</a>
+            <a href="#cita" className="hover:text-primary">Pide cita</a>
             <a href="#visitanos" className="hover:text-primary">Visítanos</a>
           </nav>
           <a href={TEL} className="btn-ember !py-2 !text-sm"><Phone className="h-4 w-4" /> 663 236 307</a>
@@ -122,6 +124,20 @@ function Index() {
               <div className="text-sm uppercase tracking-widest text-muted-foreground">{l}</div>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* BOOKING */}
+      <section id="cita" className="mx-auto max-w-4xl px-6 py-28">
+        <div className="text-center">
+          <p className="eyebrow">Reserva tu hueco</p>
+          <h2 className="font-display text-6xl leading-none md:text-8xl">Pide cita</h2>
+          <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
+            Dinos qué necesita tu moto, sus datos y cuándo te va bien. Te llamamos para confirmar día y hora.
+          </p>
+        </div>
+        <div className="mt-12">
+          <BookingForm />
         </div>
       </section>
 

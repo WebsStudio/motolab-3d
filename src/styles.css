@@ -169,6 +169,12 @@
   }
 }
 
+html {
+  scroll-behavior: smooth;
+  /* keeps the heading of an anchored section clear of the fixed header */
+  scroll-padding-top: 6rem;
+}
+
 @utility eyebrow {
   margin-bottom: 0.75rem;
   font-size: 0.8rem;
@@ -246,6 +252,46 @@
 @utility marquee {
   animation: marquee 25s linear infinite;
 }
+@utility booking-card {
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  border-radius: 1.5rem;
+  border: 1px solid var(--border);
+  background: linear-gradient(160deg, var(--card), var(--background));
+  box-shadow: 0 30px 80px -40px color-mix(in oklab, var(--primary) 45%, transparent);
+}
+@utility field {
+  display: block;
+  & > span {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted-foreground);
+  }
+  & input,
+  & select,
+  & textarea {
+    width: 100%;
+    padding: 0.75rem 0.9rem;
+    border-radius: 0.75rem;
+    border: 1px solid var(--input);
+    background: color-mix(in oklab, var(--background) 72%, var(--card));
+    color: var(--foreground);
+    font-size: 1rem;
+    color-scheme: dark;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    &::placeholder { color: color-mix(in oklab, var(--muted-foreground) 65%, transparent); }
+    &:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px color-mix(in oklab, var(--primary) 25%, transparent);
+    }
+  }
+  & textarea { resize: vertical; min-height: 3.5rem; }
+  & select { appearance: none; cursor: pointer; }
+}
+
 @keyframes marquee { to { transform: translateX(-50%); } }
 @keyframes pulse-ember {
   0%, 100% { box-shadow: 0 0 0 0 color-mix(in oklab, var(--primary) 60%, transparent); }
